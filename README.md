@@ -1,4 +1,6 @@
 
+[Open in NPM](https://www.npmjs.com/package/@subnik/socialmedia-scraper)
+
 ## Install module
 
 ```bash
