@@ -104,9 +104,9 @@ const res1 = await youtubeV1.getChannel('UC1KmNKYC1l0stjctkGswl6g', options)
 // method 2 - get basic channel videos
 const res2 = await youtubeV1.getChannelVideos('UC1KmNKYC1l0stjctkGswl6g', options)
 
-// method 3 - get basic channel videos
+// method 3 - search channel by name
 const res3 = await youtubeV1.searchChannel('pewdiepie', options)
 
-// method 4 - get basic channel videos
-const res3 = await youtubeV1.getVideoComments('pSOOt4-40gU', options)
+// method 4 - get video comments
+const res4 = await youtubeV1.getVideoComments('pSOOt4-40gU', options)
 ```
