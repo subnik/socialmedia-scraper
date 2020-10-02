@@ -8,6 +8,8 @@ const createProfileDataModel = require('./lib/profile-create-data-model')
 const validatePost = require('./lib/post-validate-json')
 const createPostDataModel = require('./lib/post-create-data-model')
 
+const { writeJSONFile } = require('../download')
+
 module.exports.getProfile = async (username, options = {}) => {
     try {
         const igUrl = `https://www.instagram.com/${username}?__a=1`
@@ -32,7 +34,15 @@ module.exports.getProfile = async (username, options = {}) => {
             }
         }
 
-        return options.withDataModel ? createProfileDataModel(json) : json
+        const data = options.withDataModel ? createProfileDataModel(json) : json
+        if (options.downloadFile) {
+            writeJSONFile({
+                fileName: `instagram-v1-${username}`,
+                json: data,
+            })
+        }
+
+        return data
     } catch (err) {
         if (err.response) {
             if (err.response.notFound) throw new Error('profile not found')
@@ -59,5 +69,13 @@ module.exports.getPost = async (postCode, options = {}) => {
         }
     }
 
-    return options.withDataModel ? createPostDataModel(json) : json
+    const data = options.withDataModel ? createPostDataModel(json) : json
+    if (options.downloadFile) {
+        writeJSONFile({
+            fileName: `instagram-v1-${postCode}`,
+            json: data,
+        })
+    }
+
+    return data
 }

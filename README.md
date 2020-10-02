@@ -25,6 +25,10 @@ cons options = {
 
     // used with feed related calls to fetch a specific amount of videos
     limit: 5,
+
+    // allow to download json response
+    // will be stored at at your root directory, folder name "scraper-downloads"
+    downloadFile: false,
 }
 
 // method 1 - get user profile
@@ -58,6 +62,10 @@ cons options = {
     // get a more beautiful json response
     withDataModel: false,
 
+     // allow to download json response
+    // will be stored at at your root directory, folder name "scraper-downloads"
+    downloadFile: false,
+
     // @TODO: we may want to assign user agents here too
 }
 
@@ -70,7 +78,7 @@ const res2 = await instagramV1.getPost('CFuqxINhoRz', options)
 
 ## Youtube scraper v1
 
-Using youtube data api
+Using youtube data api. Read more about (YOUTUBE DATA API Documentation)['https://developers.google.com/youtube/v3/getting-started']
 
 NOTE: requires `apiKey` from your google console
 
@@ -88,6 +96,10 @@ cons options = {
     // limit how many elements we want to fetch
     // this is allowed in all methods expect getChannel
     limit: 5,
+
+     // allow to download json response
+    // will be stored at at your root directory, folder name "scraper-downloads"
+    downloadFile: false,
 
     /* below are method only used in getVideoComments */
 

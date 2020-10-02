@@ -1,4 +1,7 @@
 
+# files
+/scraper-downloads
+
 # dependencies
 /node_modules
 
