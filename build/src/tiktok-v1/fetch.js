@@ -1,6 +1,10 @@
 const scraper = require('tiktok-scraper');
 
 const {
+  writeJSONFile
+} = require('../download');
+
+const {
   withExTime,
   arrayRandom,
   userAgents
@@ -11,6 +15,14 @@ module.exports.getUser = async (username, options = {}) => {
     userAgent: arrayRandom(options.userAgents || userAgents)
   });
   const data = await (options.withExTime ? withExTime(promise) : promise);
+
+  if (options.downloadFile) {
+    writeJSONFile({
+      fileName: `tiktok-v1-${username}`,
+      json: data
+    });
+  }
+
   return data;
 };
 
@@ -20,8 +32,16 @@ module.exports.getFeedByUserId = async (userId, options = {}) => {
     userAgent: arrayRandom(options.userAgents || userAgents),
     by_user_id: true
   });
-  const data = await (options.withExTime ? withExTime(promise) : promise);
-  return data.collector;
+  const data = (await (options.withExTime ? withExTime(promise) : promise)).collector;
+
+  if (options.downloadFile) {
+    writeJSONFile({
+      fileName: `tiktok-v1-feed-${userId}`,
+      json: data
+    });
+  }
+
+  return data;
 };
 
 module.exports.getFeedByUsername = async (username, options = {}) => {
@@ -29,8 +49,16 @@ module.exports.getFeedByUsername = async (username, options = {}) => {
     userAgent: arrayRandom(options.userAgents || userAgents),
     number: options.limit || 5
   });
-  const data = await (options.withExTime ? withExTime(promise) : promise);
-  return data.collector;
+  const data = (await (options.withExTime ? withExTime(promise) : promise)).collector;
+
+  if (options.downloadFile) {
+    writeJSONFile({
+      fileName: `tiktok-v1-feed-${username}`,
+      json: data
+    });
+  }
+
+  return data;
 };
 
 module.exports.getFeedByTrend = async (options = {}) => {
@@ -38,6 +66,14 @@ module.exports.getFeedByTrend = async (options = {}) => {
     userAgent: arrayRandom(options.userAgents || userAgents),
     number: options.limit || 5
   });
-  const data = await (options.withExTime ? withExTime(promise) : promise);
-  return data.collector;
+  const data = (await (options.withExTime ? withExTime(promise) : promise)).collector;
+
+  if (options.downloadFile) {
+    writeJSONFile({
+      fileName: `tiktok-v1-feed-trending`,
+      json: data
+    });
+  }
+
+  return data;
 };
