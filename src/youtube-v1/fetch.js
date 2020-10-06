@@ -1,5 +1,5 @@
 
-const request = require('superagent')
+const fetch = require('node-fetch')
 
 const { writeJSONFile } = require('../download')
 
@@ -9,6 +9,26 @@ const {
     channelsSearchDataModel,
     videoCommentsDataModel,
 } = require('./lib/data-models')
+
+const request = async (url, options = {}) => {
+    const res = await fetch(url, {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+            ...(options.headers || {}),
+        },
+    })
+
+    if (res.status !== 200) throw new Error('request failed')
+
+    let json = null
+    try {
+        json = await res.json()
+    } catch (err) {}
+
+    if (!json) throw new Error('data not found')
+    return json
+}
 
 module.exports.getChannel = async (channelId, options = {}) => {
     if (!options.apiKey) throw new Error('missing options.apiKey')
@@ -20,11 +40,10 @@ module.exports.getChannel = async (channelId, options = {}) => {
         `&key=${options.apiKey}`
     ].join('')
 
-    const res = await request.get(url)
-    const json = res.body.items
-    if (!json.length) return null
+    const json = await request(url, options)
+    if (!json.items.length) return null
 
-    const data = options.withDataModel ? channelDataModel(json[0]) : json[0]
+    const data = options.withDataModel ? channelDataModel(json.items[0]) : json.items[0]
 
     if (options.downloadFile) {
         writeJSONFile({
@@ -48,11 +67,10 @@ module.exports.getChannelVideos = async (channelId, options = {}) => {
         `&key=${options.apiKey}`,
     ].join('')
 
-    const res = await request.get(url)
-    const json = res.body.items
-    if (!json.length) return []
+    const json = await request(url, options)
+    if (!json.items.length) return []
 
-    const data = options.withDataModel ? channelVideosDataModel(json) : json
+    const data = options.withDataModel ? channelVideosDataModel(json.items) : json.items
 
     if (options.downloadFile) {
         writeJSONFile({
@@ -76,11 +94,10 @@ module.exports.searchChannel = async (username, options = {}) => {
         `&key=${options.apiKey}`,
     ].join('')
 
-    const res = await request.get(url)
-    const json = res.body.items
-    if (!json.length) return []
+    const json = await request(url, options)
+    if (!json.items.length) return []
 
-    const data = options.withDataModel ? channelsSearchDataModel(json) : json
+    const data = options.withDataModel ? channelsSearchDataModel(json.items) : json.items
 
     if (options.downloadFile) {
         writeJSONFile({
@@ -105,11 +122,10 @@ module.exports.getVideoComments = async (videoId, options = {}) => {
         `&key=${options.apiKey}`,
     ].join('')
 
-    const res = await request.get(url)
-    const json = res.body.items
-    if (json.length === 0) return []
+    const json = await request(url, options)
+    if (!json.items.length) return []
 
-    const data = options.withDataModel ? videoCommentsDataModel(json) : json
+    const data = options.withDataModel ? videoCommentsDataModel(json.items) : json.items
 
     if (options.downloadFile) {
         writeJSONFile({

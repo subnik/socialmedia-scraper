@@ -23,18 +23,20 @@ const features = [
         //     withDataModel: true,
         //     downloadFile: true,
         // })
-        // // console.log(r)
+        // console.log(r)
 
         // const r2 = await require('./instagram-v1').getPost('Bzqea9qCv6k', {
-        //     // validateJson: true,
-        //     // withDataModel: true,
+        //     validateJson: true,
+        //     withDataModel: true,
         //     downloadFile: true,
         // })
+        // console.log(r2)
 
         // const r = await require('./youtube-v1/fetch').getChannel('UC1KmNKYC1l0stjctkGswl6g', {
         //     apiKey: getEnv('YOUTUBE_API_KEY'),
         //     withDataModel: true,
         // })
+        // console.log(r)
 
         // console.log(r)
 
@@ -57,7 +59,7 @@ const features = [
         //     withDataModel: true,
         //     downloadFile: true,
         // })
-
+        // console.log(r)
         // const r2 = await require('./tiktok-v1').getFeedByUsername('memusti', { limit: 2, downloadFile: true })
 
         // console.log('fooo')
