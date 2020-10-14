@@ -8,7 +8,8 @@ const features = [// [ '$INIT_SERVICE', async () => {
 // }],
 ['$FINISH', async ({
   getEnv
-}) => {// const file = await require('./download/file').writeJSONFile({
+}) => {
+  // const file = await require('./download/file').writeJSONFile({
   //     json: { foo: '1' },
   //     fileName: 'foo',
   // })
@@ -17,11 +18,10 @@ const features = [// [ '$INIT_SERVICE', async () => {
   // console.log(r)
   // const r2 = await require('./tiktok-v1').getFeedByUsername('memusti', { limit: 2 })
   // console.log(r2)
-  // const r = await require('./instagram-v1').getProfile('mustafaalfredji', {
-  //     withDataModel: true,
-  //     downloadFile: true,
-  // })
-  // console.log(r)
+  const r = await require('./instagram-v1').getProfile('mustafaalfredjiasdasdasd', {
+    withDataModel: true,
+    downloadFile: true
+  }); // console.log(r)
   // const r2 = await require('./instagram-v1').getPost('Bzqea9qCv6k', {
   //     validateJson: true,
   //     withDataModel: true,

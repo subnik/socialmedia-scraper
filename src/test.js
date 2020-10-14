@@ -19,10 +19,10 @@ const features = [
         // const r2 = await require('./tiktok-v1').getFeedByUsername('memusti', { limit: 2 })
         // console.log(r2)
 
-        // const r = await require('./instagram-v1').getProfile('mustafaalfredji', {
-        //     withDataModel: true,
-        //     downloadFile: true,
-        // })
+        const r = await require('./instagram-v1').getProfile('mustafaalfredjiasdasdasd', {
+            withDataModel: true,
+            downloadFile: true,
+        })
         // console.log(r)
 
         // const r2 = await require('./instagram-v1').getPost('Bzqea9qCv6k', {

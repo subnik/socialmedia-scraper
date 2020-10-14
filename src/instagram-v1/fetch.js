@@ -25,64 +25,60 @@ const userAgents = [
 ]
 
 module.exports.getProfile = async (username, options = {}) => {
-    try {
-        const igUrl = `https://www.instagram.com/${username}?__a=1`
-        const url = options.setUrl ? options.setUrl(igUrl) : igUrl
+    const igUrl = `https://www.instagram.com/${username}?__a=1`
+    const url = options.setUrl ? options.setUrl(igUrl) : igUrl
 
-        const res = await fetch(url, {
-            method: 'GET',
-            credentials: 'include',
-            headers: {
-                ...headers,
-                'User-Agent': options.userAgent || userAgents[Math.floor(Math.random() * userAgents.length)],
-                ...(options.headers || {}),
-            },
-        })
+    const res = await fetch(url, {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+            ...headers,
+            'User-Agent': options.userAgent || userAgents[Math.floor(Math.random() * userAgents.length)],
+            ...(options.headers || {}),
+        },
+    })
     
-        if (res.status !== 200) throw new Error('request failed')
-
-        let json = null
-        try {
-            json = await res.json()
-        } catch (err) {}
-
-        if (!json) throw new Error('data not found')
-
-        // find if got block by bot
-        if (res.redirects) {
-            const gotBlocked = res.redirects.some(i => i.indexOf('login') !== -1)
-            if (gotBlocked) throw new Error('blocked')
-        }
-    
-        if (options.validateJson) {
-            const validator = validateProfile(json)
-            if (validator.errors.length) throw new Error(validator.errors[0])
-
-            const media = json.graphql.user.edge_owner_to_timeline_media.edges
-            if (media.length) {
-                const validator2 = validateProfileMedia(media[0])
-                if (validator2.errors.length) throw new Error(validator2.errors[0])
-            }
-        }
-
-        const data = options.withDataModel ? createProfileDataModel(json) : json
-        if (options.downloadFile) {
-            writeJSONFile({
-                fileName: `instagram-v1-${username}`,
-                json: data,
-            })
-        }
-
-        return data
-    } catch (err) {
-        if (err.response) {
-            if (err.response.notFound) throw new Error('profile not found')
-            if (err.response.unauthorized) throw new Error('unauthorized')
-            if (err.response.forbidden) throw new Error('forbidden')
-        }
-
-        throw err
+    if (res.status !== 200) {
+        if (res.status === 404) throw new Error('notfound')
+        if (res.status === 401) throw new Error('unauthorized')
+        if (res.status === 403) throw new Error('forbidden')
+        if (res.status === 429) throw new Error('blocked')
+        throw new Error('request failed')
     }
+
+    let json = null
+    try {
+        json = await res.json()
+    } catch (err) {}
+
+    if (!json) throw new Error('notfound')
+
+    // find if got block by bot
+    if (res.redirects) {
+        const gotBlocked = res.redirects.some(i => i.indexOf('login') !== -1)
+        if (gotBlocked) throw new Error('blocked')
+    }
+
+    if (options.validateJson) {
+        const validator = validateProfile(json)
+        if (validator.errors.length) throw new Error(validator.errors[0])
+
+        const media = json.graphql.user.edge_owner_to_timeline_media.edges
+        if (media.length) {
+            const validator2 = validateProfileMedia(media[0])
+            if (validator2.errors.length) throw new Error(validator2.errors[0])
+        }
+    }
+
+    const data = options.withDataModel ? createProfileDataModel(json) : json
+    if (options.downloadFile) {
+        writeJSONFile({
+            fileName: `instagram-v1-${username}`,
+            json: data,
+        })
+    }
+
+    return data
 }
 
 module.exports.getPost = async (postCode, options = {}) => {
@@ -98,14 +94,20 @@ module.exports.getPost = async (postCode, options = {}) => {
         },
     })
 
-    if (res.status !== 200) throw new Error('request failed')
+    if (res.status !== 200) {
+        if (res.status === 404) throw new Error('notfound')
+        if (res.status === 401) throw new Error('unauthorized')
+        if (res.status === 403) throw new Error('forbidden')
+        if (res.status === 429) throw new Error('blocked')
+        throw new Error('failed')
+    }
 
     let json = null
     try {
         json = await res.json()
     } catch (err) {}
 
-    if (!json) throw new Error('data not found')
+    if (!json) throw new Error('notfound')
 
     if (options.validateJson) {
         const validator = validatePost(json)
