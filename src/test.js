@@ -19,10 +19,10 @@ const features = [
         // const r2 = await require('./tiktok-v1').getFeedByUsername('memusti', { limit: 2 })
         // console.log(r2)
 
-        const r = await require('./instagram-v1').getProfile('mustafaalfredjiasdasdasd', {
-            withDataModel: true,
-            downloadFile: true,
-        })
+        // const r = await require('./instagram-v1').getProfile('mustafaalfredjiasdasdasd', {
+        //     withDataModel: true,
+        //     downloadFile: true,
+        // })
         // console.log(r)
 
         // const r2 = await require('./instagram-v1').getPost('Bzqea9qCv6k', {
@@ -61,7 +61,8 @@ const features = [
         // })
         // console.log(r)
         // const r2 = await require('./tiktok-v1').getFeedByUsername('memusti', { limit: 2, downloadFile: true })
-
+        // const r2 = await require('./tiktok-v1').getFeedByUserId(186992876663578624, { limit: 2 })
+        // console.log(r2)
         // console.log('fooo')
         // console.log(r)
     }]

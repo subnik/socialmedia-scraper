@@ -8,8 +8,7 @@ const features = [// [ '$INIT_SERVICE', async () => {
 // }],
 ['$FINISH', async ({
   getEnv
-}) => {
-  // const file = await require('./download/file').writeJSONFile({
+}) => {// const file = await require('./download/file').writeJSONFile({
   //     json: { foo: '1' },
   //     fileName: 'foo',
   // })
@@ -18,10 +17,11 @@ const features = [// [ '$INIT_SERVICE', async () => {
   // console.log(r)
   // const r2 = await require('./tiktok-v1').getFeedByUsername('memusti', { limit: 2 })
   // console.log(r2)
-  const r = await require('./instagram-v1').getProfile('mustafaalfredjiasdasdasd', {
-    withDataModel: true,
-    downloadFile: true
-  }); // console.log(r)
+  // const r = await require('./instagram-v1').getProfile('mustafaalfredjiasdasdasd', {
+  //     withDataModel: true,
+  //     downloadFile: true,
+  // })
+  // console.log(r)
   // const r2 = await require('./instagram-v1').getPost('Bzqea9qCv6k', {
   //     validateJson: true,
   //     withDataModel: true,
@@ -51,6 +51,8 @@ const features = [// [ '$INIT_SERVICE', async () => {
   // })
   // console.log(r)
   // const r2 = await require('./tiktok-v1').getFeedByUsername('memusti', { limit: 2, downloadFile: true })
+  // const r2 = await require('./tiktok-v1').getFeedByUserId(186992876663578624, { limit: 2 })
+  // console.log(r2)
   // console.log('fooo')
   // console.log(r)
 }]];
