@@ -11,8 +11,8 @@ module.exports.channelDataModel = json => ({
   videos: json.statistics.videoCount,
   comments: json.statistics.commentCount,
   published: json.snippet.publishedAt,
-  featured: json.brandingSettings.channel.featuredChannelsUrls,
-  banner: json.brandingSettings.image.bannerImageUrl
+  featured: json.brandingSettings.channel.featuredChannelsUrls // banner: json.brandingSettings.image.bannerImageUrl,
+
 });
 
 module.exports.channelVideosDataModel = json => json.map(item => ({
