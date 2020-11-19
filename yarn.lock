@@ -437,9 +437,9 @@ balanced-match@^1.0.0:
   integrity sha1-ibTRmasr7kneFk6gK4nORi1xt2c=
 
 base64-js@^1.3.1:
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/base64-js/-/base64-js-1.3.1.tgz#58ece8cb75dd07e71ed08c736abc5fac4dbf8df1"
-  integrity sha512-mLQ4i2QO1ytvGWFWmcngKO//JXAQueZvwEKtjgQFM4jIK0kU+ytMfplL8j+n5mspOfjHwoAg+9yhb7BwAHm36g==
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/base64-js/-/base64-js-1.5.1.tgz#1b1b440160a5bf7ad40b650f095963481903930a"
+  integrity sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==
 
 base@^0.11.1:
   version "0.11.2"
@@ -543,9 +543,9 @@ buffer-crc32@^0.2.1, buffer-crc32@^0.2.13:
   integrity sha1-DTM+PwDqxQqhRUq9MO+MKl2ackI=
 
 buffer@^5.1.0, buffer@^5.5.0:
-  version "5.7.0"
-  resolved "https://registry.yarnpkg.com/buffer/-/buffer-5.7.0.tgz#88afbd29fc89fa7b58e82b39206f31f2cf34feed"
-  integrity sha512-cd+5r1VLBwUqTrmnzW+D7ABkJUM6mr7uv1dv+6jRw4Rcl7tFIFHDqHPL98LhpGFn3dbAt3gtLxtrWp4m1kFrqg==
+  version "5.7.1"
+  resolved "https://registry.yarnpkg.com/buffer/-/buffer-5.7.1.tgz#ba62e7c13133053582197160851a8f648e99eed0"
+  integrity sha512-EHcyIPBQ4BSGlvjB16k5KgAJ27CIsHY/2JBmCRReo48y9rQ3MaUzWX3KVlBa4U7MyX02HdVj0K7C3WaB3ju7FQ==
   dependencies:
     base64-js "^1.3.1"
     ieee754 "^1.1.13"
@@ -2607,10 +2607,10 @@ text-hex@1.0.x:
   resolved "https://registry.yarnpkg.com/text-hex/-/text-hex-1.0.0.tgz#69dc9c1b17446ee79a92bf5b884bb4b9127506f5"
   integrity sha512-uuVGNWzgJ4yhRaNSiubPY7OjISw4sw4E5Uv0wbjp+OzcbmVU/rsT8ujgcXJhn9ypzsgr5vlzpPqP+MBBKcGvbg==
 
-tiktok-scraper@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/tiktok-scraper/-/tiktok-scraper-1.4.0.tgz#f7feb5962264d973b49b93d9e17d012ea607f09c"
-  integrity sha512-+zw3Qj+Rc/e7KeMPrhqxv+ilUbIyEcewG/+7G2qg6HqLaFB7njklpQNJHy40tz6NgCC67TR168jGQfaae9aj4w==
+tiktok-scraper@^1.4.3:
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/tiktok-scraper/-/tiktok-scraper-1.4.3.tgz#8fc79a4e017b080ae5a14aa53da90ca4b36ac93c"
+  integrity sha512-X6hgQ/Wx3/BQ0XOlIQ/fglM/EomjOAm2P9i8YAfpUn2bQcHa3D5M/kbI9EJWlV3DaFnpX1jdMQPsX+C4NiiR3w==
   dependencies:
     archiver "^3.1.1"
     async "^3.1.0"

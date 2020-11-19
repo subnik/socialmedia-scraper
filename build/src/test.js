@@ -8,14 +8,14 @@ const features = [// [ '$INIT_SERVICE', async () => {
 // }],
 ['$FINISH', async ({
   getEnv
-}) => {// const file = await require('./download/file').writeJSONFile({
+}) => {
+  // const file = await require('./download/file').writeJSONFile({
   //     json: { foo: '1' },
   //     fileName: 'foo',
   // })
   // throw new Error('fooo')
-  // const r = await require('./tiktok-v1').getUser('memusti')
-  // console.log(r)
-  // const r2 = await require('./tiktok-v1').getFeedByUsername('memusti', { limit: 2 })
+  const r = await require('./tiktok-v1').getUser('memusti');
+  console.log(r); // const r2 = await require('./tiktok-v1').getFeedByUsername('memusti', { limit: 2 })
   // console.log(r2)
   // const r = await require('./instagram-v1').getProfile('mustafaalfredjiasdasdasd', {
   //     withDataModel: true,
