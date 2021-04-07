@@ -43,3 +43,29 @@ module.exports.videoCommentsDataModel = (json) => json.map(i => ({
     published: i.snippet.topLevelComment.snippet.publishedAt,
     updated: i.snippet.topLevelComment.snippet.updatedAt,
 }))
+
+module.exports.channelVideoModel = (json) => {
+    const { thumbnails } = json.snippet
+    const stats = json.statistics
+    return {
+        id: json.id,
+        title: json.snippet.title,
+        description: json.snippet.description,
+        pic: thumbnails.standard
+            ? thumbnails.standard.url
+            : (
+                thumbnails.high && thumbnails.high.url
+                || thumbnails.medium && thumbnails.medium.url
+                || thumbnails.default && thumbnails.default.url
+            ),
+        tags: json.snippet.tags,
+        views: Number(stats.viewCount),
+        likes: Number(stats.likeCount),
+        dislikes: Number(stats.dislikeCount),
+        comments: Number(stats.commentCount),
+        engagement: (
+            (Number(stats.likeCount) + Number(stats.dislikeCount) + Number(stats.commentCount))
+            / Number(stats.viewCount)
+        ).toFixed(2) / 1,
+    }
+}

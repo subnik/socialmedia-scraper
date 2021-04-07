@@ -8,7 +8,8 @@ const {
   channelDataModel,
   channelVideosDataModel,
   channelsSearchDataModel,
-  videoCommentsDataModel
+  videoCommentsDataModel,
+  channelVideoModel
 } = require('./lib/data-models');
 
 const request = async (url, options = {}) => {
@@ -56,6 +57,23 @@ module.exports.getChannelVideos = async (channelId, options = {}) => {
   if (options.downloadFile) {
     writeJSONFile({
       fileName: `youtube-v1-videos-${channelId}`,
+      json: data
+    });
+  }
+
+  return data;
+};
+
+module.exports.getVideo = async (videoId, options = {}) => {
+  if (!options.apiKey) throw new Error('missing options.apiKey');
+  const url = ['https://www.googleapis.com/youtube/v3/videos', '?part=snippet,statistics', `&id=${videoId}`, `&key=${options.apiKey}`].join('');
+  const json = await request(url, options);
+  if (!json.items.length) return null;
+  const data = options.withDataModel ? channelVideoModel(json.items[0]) : json.items[0];
+
+  if (options.downloadFile) {
+    writeJSONFile({
+      fileName: `youtube-v1-video-${videoId}`,
       json: data
     });
   }

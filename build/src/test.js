@@ -55,6 +55,11 @@ const features = [// [ '$INIT_SERVICE', async () => {
   // console.log(r2)
   // console.log('fooo')
   // console.log(r)
+  // const r = await require('./youtube-v1').getVideo('artTKcYwRpg', {
+  //     apiKey: getEnv('YOUTUBE_API_KEY'),
+  //     withDataModel: true,
+  // })
+  // console.log(JSON.stringify(r))
 }]];
 runHookApp({
   trace: true,
