@@ -72,6 +72,17 @@ const features = [
         // })
 
         // console.log(JSON.stringify(r))
+
+        // const r = await require('./youtube-v2').getChannelVideos('UC-lHJZR3Gqxm24_Vd_AJ5Yw')
+        // console.log(r)
+
+        // const r = await require('./youtube-v2').searchChannel('lelepons')
+        // console.log(r)
+
+        // const r = await require('./youtube-v2').getVideoData('aiRLejymIn8')
+        // console.log(r)
+
+
     }]
 ]
 

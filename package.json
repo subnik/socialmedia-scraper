@@ -17,6 +17,7 @@
     "clean:build": "rm -rf ./build"
   },
   "dependencies": {
+    "cheerio": "^0.22.0",
     "jsonschema": "^1.2.7",
     "node-fetch": "^2.6.1",
     "tiktok-scraper": "https://github.com/mysocialio/drawrowfly-tiktok-scraper/archive/1.4.25.tar.gz"
