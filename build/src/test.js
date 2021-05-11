@@ -60,6 +60,20 @@ const features = [// [ '$INIT_SERVICE', async () => {
   //     withDataModel: true,
   // })
   // console.log(JSON.stringify(r))
+  // let videosData = []
+  // const videos = await require('./youtube-v2').getChannelVideos('UC-lHJZR3Gqxm24_Vd_AJ5Yw')
+  // console.log(videos)
+  // const r = await require('./youtube-v2').searchChannel('lelepons', {
+  //     headers: {
+  //         'Accept-Language': 'en',
+  //     },
+  // })
+  // console.log(r)
+  // await Promise.all(videos.map(async i => {
+  //     const r = await require('./youtube-v2').getVideoData(i)
+  //     videosData.push(r)
+  // }))
+  // console.log(videosData)
 }]];
 runHookApp({
   trace: true,
