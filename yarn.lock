@@ -651,7 +651,7 @@
   "resolved" "https://registry.npmjs.org/camelcase/-/camelcase-5.3.1.tgz"
   "version" "5.3.1"
 
-"canvas@^2.5.0", "canvas@^2.7.0":
+"canvas@^2.5.0":
   "integrity" "sha512-pzCxtkHb+5su5MQjTtepMDlIOtaXo277x0C0u3nMOxtkhTyQ+h2yNKhlROAaDllWgRyePAUitC08sXw26Eb6aw=="
   "resolved" "https://registry.npmjs.org/canvas/-/canvas-2.7.0.tgz"
   "version" "2.7.0"
@@ -3222,15 +3222,14 @@
   "resolved" "https://registry.npmjs.org/text-hex/-/text-hex-1.0.0.tgz"
   "version" "1.0.0"
 
-"tiktok-scraper@^1.4.23":
-  "integrity" "sha512-sBrNEPHa5uMketrcZdKJ9bmPGABfEK5WITpYxsaaRu7I470mbecAxt6/67g/bhjMfyngZaPDo5gXMvwYdxyDwQ=="
-  "resolved" "https://registry.npmjs.org/tiktok-scraper/-/tiktok-scraper-1.4.23.tgz"
-  "version" "1.4.23"
+"tiktok-scraper@https://github.com/mysocialio/drawrowfly-tiktok-scraper/archive/1.4.25.tar.gz":
+  "integrity" "sha512-LzFP4eMv797eUVShac08jIP6NJQFOpYv0UpJJ6PjZim1MNZW7WWoBZP282up786OBjLKpVKb8BsaxwM4KmwXbw=="
+  "resolved" "https://github.com/mysocialio/drawrowfly-tiktok-scraper/archive/1.4.25.tar.gz"
+  "version" "1.4.25"
   dependencies:
     "archiver" "^3.1.1"
     "async" "^3.1.0"
     "bluebird" "^3.7.1"
-    "canvas" "^2.7.0"
     "jsdom" "^16.5.3"
     "json2csv" "4.5.1"
     "ora" "^4.0.2"
