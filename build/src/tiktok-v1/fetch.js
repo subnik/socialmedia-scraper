@@ -1,16 +1,8 @@
-const scraper = require('tiktok-scraper');
-
-const {
-  writeJSONFile
-} = require('../download');
-
-const {
-  withExTime,
-  arrayRandom,
-  userAgents
-} = require('./lib');
-
+// const scraper = require('tiktok-scraper')
+// const { writeJSONFile } = require('../download')
+// const { withExTime, arrayRandom, userAgents } = require('./lib')
 module.exports.getUser = async (username, options = {}) => {
+  throw new Error('deprecated, use tiktok-v2 instead');
   const promise = scraper.getUserProfileInfo(username, {
     userAgent: arrayRandom(options.userAgents || userAgents)
   });
@@ -27,6 +19,7 @@ module.exports.getUser = async (username, options = {}) => {
 };
 
 module.exports.getFeedByUserId = async (userId, options = {}) => {
+  throw new Error('deprecated, use tiktok-v2 instead');
   const promise = scraper.user(userId, {
     number: options.limit || 5,
     userAgent: arrayRandom(options.userAgents || userAgents),
@@ -45,6 +38,7 @@ module.exports.getFeedByUserId = async (userId, options = {}) => {
 };
 
 module.exports.getFeedByUsername = async (username, options = {}) => {
+  throw new Error('deprecated, use tiktok-v2 instead');
   const promise = scraper.user(username, {
     userAgent: arrayRandom(options.userAgents || userAgents),
     number: options.limit || 5
@@ -62,6 +56,7 @@ module.exports.getFeedByUsername = async (username, options = {}) => {
 };
 
 module.exports.getFeedByTrend = async (options = {}) => {
+  throw new Error('deprecated, use tiktok-v2 instead');
   const promise = scraper.trend('', {
     userAgent: arrayRandom(options.userAgents || userAgents),
     number: options.limit || 5

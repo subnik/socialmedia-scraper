@@ -74,6 +74,14 @@ const features = [// [ '$INIT_SERVICE', async () => {
   //     videosData.push(r)
   // }))
   // console.log(videosData)
+  // const r = await require('./tiktok-v2').getUser('memusti', {
+  //     withDataModel: true,
+  // })
+  // console.log(r)
+  // const r = await require('./tiktok-v2').getUserWithVideosLimit('MS4wLjABAAAA9gTcRquaicfp4drx_aiX7foihZibU1wBk2J099l4JJtnqKySvKEW7ww6Ou7dquDa', {
+  //     withDataModel: true,
+  // })
+  // console.log(r)
 }]];
 runHookApp({
   trace: true,
