@@ -151,8 +151,7 @@ module.exports.getUser = async (username, options = {}) => {
                 credentials: 'include',
                 headers: {
                     referer: 'https://www.tiktok.com/',
-                    'user-agent': 'Googlebot',
-                    // 'user-agent': arrayRandom(options.userAgents || userAgents),
+                    'user-agent': arrayRandom(options.userAgents || userAgents),
                     ...(options.headers || {}),
                 },
             })
