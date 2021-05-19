@@ -6,12 +6,13 @@ const {
 const Utils = require("./utils");
 
 const iPhone11 = devices["iPhone 11 Pro"];
-const userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (Windows NT 10.0; Win64; x64) Chrome/90.0.4430.85 Safari/537.36";
-const args = ["--headless", "--disable-blink-features", "--disable-blink-features=AutomationControlled", "--disable-infobars", "--window-size=1920,1080", "--start-maximized"]; // Default TikTok loading page
-
-const default_url = "https://www.tiktok.com/@rihanna?lang=en";
 
 class Signer {
+  userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (Windows NT 10.0; Win64; x64) Chrome/90.0.4430.85 Safari/537.36";
+  args = ["--headless", "--disable-blink-features", "--disable-blink-features=AutomationControlled", "--disable-infobars", "--window-size=1920,1080", "--start-maximized"]; // Default TikTok loading page
+
+  default_url = "https://www.tiktok.com/@rihanna?lang=en";
+
   constructor(default_url, userAgent, browser) {
     if (default_url) {
       this.default_url = default_url;

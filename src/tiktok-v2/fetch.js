@@ -96,28 +96,27 @@ module.exports.getUserWithVideosLimit = async (secUid, options = {}) => {
             }
         
             const url = `https://www.tiktok.com/api/post/item_list/?${new URLSearchParams(qs).toString()}`
-            
-            const signer = new Signer(null, arrayRandom(options.userAgents || userAgents)) // Create new signer
+            const userAgent = arrayRandom(options.userAgents || userAgents)
+            const signer = new Signer(null, userAgent) // Create new signer
             await signer.init() // Create page with. Returns promise
             const signature = await signer.sign(url) // Get sign for your url. Returns promise
             const navigator = await signer.navigator() // Retrieve navigator data used when signature was generated
             await signer.close() // Close browser. Returns promise
 
+            const headers = {
+                referer: 'https://www.tiktok.com/',
+                'user-agent': navigator.user_agent,
+                ...(options.headers || {}),
+            }
+
             const res = await fetch(signature.signed_url, {
                 method: 'GET',
                 credentials: 'include',
-                headers: {
-                    referer: 'https://www.tiktok.com/',
-                    'user-agent': navigator.user_agent,
-                    ...(options.headers || {}),
-                },
+                headers,
             })
-            
-            const headers = res.headers
-            const json = await res.json()
 
             resolve({
-                data: json,
+                data: (await res.json()),
                 headers,
             })
         } catch (err) {
@@ -145,18 +144,19 @@ module.exports.getUser = async (username, options = {}) => {
     const promise = new Promise(async (resolve, reject) => {
         try {
             const url = `http://www.tiktok.com/@${username}`
+
+            const headers = {
+                referer: 'https://www.tiktok.com/',
+                'user-agent': arrayRandom(options.userAgents || userAgents),
+                ...(options.headers || {}),
+            }
             
             const result = await fetch(url, {
                 method: 'GET',
                 credentials: 'include',
-                headers: {
-                    referer: 'https://www.tiktok.com/',
-                    'user-agent': arrayRandom(options.userAgents || userAgents),
-                    ...(options.headers || {}),
-                },
+                headers,
             })
             
-            const headers = result.headers
             const text = await result.text()
 
             const data = text
